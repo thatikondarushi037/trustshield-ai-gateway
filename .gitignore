@@ -18,3 +18,9 @@ data/*.db
 data/*.db-*
 data/*.db-journal
 data/local-dev/
+data/holdout/
+.secrets/
+.tools-venv/
+.cache/
+artifacts/
+data/experiments/

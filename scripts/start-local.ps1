@@ -65,7 +65,7 @@ try {
 
     switch ($Service) {
         'Api' {
-            & $pythonPath -m uvicorn src.api:app --host 127.0.0.1 --port 8000 --no-proxy-headers
+            & $pythonPath -m uvicorn src.api:app --host 127.0.0.1 --port 8000 --no-proxy-headers --no-access-log
         }
         'Dashboard' {
             & $pythonPath -m streamlit run dashboard.py --server.address 127.0.0.1 --server.port 8501 --server.headless true --browser.gatherUsageStats false
@@ -74,8 +74,12 @@ try {
             @'
 import json
 import os
+import atexit
+from pathlib import Path
 import httpx
 from streamlit.testing.v1 import AppTest
+from streamlit.testing.v1.app_test import TMP_DIR
+atexit.register(TMP_DIR.cleanup)
 
 with httpx.Client(base_url="http://127.0.0.1:8000", trust_env=False, timeout=15) as client:
     anonymous = client.get("/audit")
@@ -91,14 +95,15 @@ with httpx.Client(base_url="http://127.0.0.1:8000", trust_env=False, timeout=15)
     assert authorized.status_code == 200
     snapshot = authorized.json()
 
-app = AppTest.from_file("dashboard.py", default_timeout=30).run()
+app = AppTest.from_file(str(Path("dashboard.py").resolve()), default_timeout=30).run()
+app.sidebar.radio[0].set_value("Security analytics").run()
 assert not app.exception, "Dashboard execution failed"
 assert not any(w.value == "Persistent security monitoring is unavailable." for w in app.warning)
 expected = [str(snapshot["metrics"][key]) for key in ("total", "allowed", "blocked", "held")]
-assert [str(metric.value) for metric in app.metric][-4:] == expected
+assert [str(metric.value) for metric in app.metric][:4] == expected
 assert len(app.dataframe) == 1
 assert len(app.dataframe[0].value) == len(snapshot["records"])
-app.button[1].click().run()
+app.sidebar.button[0].click().run()
 assert not app.exception
 print(json.dumps({"dashboard_monitoring": "PASS", "persistent_metrics": snapshot["metrics"],
                   "displayed_records": len(app.dataframe[0].value), "refresh": "PASS"}))

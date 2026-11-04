@@ -1,0 +1,42 @@
+{
+  "annotation_summary": {
+    "agreement_rate": null,
+    "cohen_kappa_fixed_rater_pair": null,
+    "disagreement_rate": null,
+    "disagreements": 0,
+    "excluded_records": 0,
+    "paired_records": 0,
+    "resolved_records": 0
+  },
+  "blocking_findings": {
+    "CATEGORY_COVERAGE_NOT_MET": 1,
+    "CLASS_SAMPLE_FLOOR_NOT_MET": 1,
+    "CUSTODIAN_PROVENANCE_ATTESTATION_REQUIRED": 1,
+    "GROUP_SAMPLE_FLOOR_NOT_MET": 1,
+    "NO_INDEPENDENT_MATERIAL_COLLECTED": 1,
+    "PRECOLLECTION_EVALUATION_PLAN_CHANGED": 1,
+    "SOURCE_COVERAGE_OR_LABEL_BALANCE_NOT_MET": 1
+  },
+  "class_counts": {},
+  "eligible_holdout_rows": 0,
+  "independence": "Attested provenance plus mechanical checks; never proof of independence",
+  "independent_component_counts": {
+    "SAFE": 0,
+    "SENSITIVE": 0
+  },
+  "known_reference_rows": 9685,
+  "known_rows_with_identity_metadata": 0,
+  "limitations": [
+    "Missing historical document/person IDs prevent complete historical group proof",
+    "Lexical similarity does not detect every semantic derivation",
+    "Blinding, fictional content and provenance truth require custodian evidence"
+  ],
+  "near_candidate_pairs": 0,
+  "raw_text_exported": false,
+  "records": 0,
+  "rules_version": "holdout-rules-1",
+  "source_tracks": 0,
+  "status": "NOT_READY",
+  "unresolved_near_pairs": 0,
+  "within_collection_near_pairs": 0
+}

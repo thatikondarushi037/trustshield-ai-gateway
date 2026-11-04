@@ -1,0 +1,20 @@
+{
+  "version": "holdout-rules-1",
+  "guideline_version": "annotation-1",
+  "minimum_rows_per_class": 300,
+  "minimum_components_per_class": 30,
+  "minimum_sources": 2,
+  "required_categories": ["EMAIL", "PIN", "ACCOUNT", "PHONE", "ADDRESS", "CREDENTIAL", "MIXED"],
+  "near_threshold": 0.85,
+  "evaluation": {
+    "positive_label": "SENSITIVE",
+    "hybrid_positive": ["REVIEW", "SENSITIVE"],
+    "review_is_abstention": true,
+    "decision_threshold": 0.5,
+    "confusion_matrix_order": [["TN", "FP"], ["FN", "TP"]],
+    "metrics": ["precision", "recall", "f1", "false_positive_rate", "false_negative_rate", "review_count"],
+    "undefined_denominators": null,
+    "confidence_intervals": "Resample independent connected groups, report group and row counts",
+    "pool_reused_examples": false
+  }
+}

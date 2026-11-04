@@ -1,5 +1,6 @@
 
 import re
+from src.text_normalization import matching_view, original_span
 
 
 # 1. Original patterns: explicit PII disclosures
@@ -69,6 +70,7 @@ CONTEXT_PATTERNS = {
 # 3. Detect matches from both pattern groups
 def detect_pii(text):
     matches = []
+    view, positions = matching_view(text)
 
     all_patterns = {
         **PII_PATTERNS,
@@ -76,11 +78,13 @@ def detect_pii(text):
     }
 
     for pii_type, pattern in all_patterns.items():
-        for match in pattern.finditer(text):
+        matcher = re.compile(pattern.pattern, pattern.flags | re.DOTALL) if pii_type.endswith("_CONTEXT") else pattern
+        for match in matcher.finditer(view):
+            start, end = original_span(match.start(), match.end(), positions)
             matches.append({
                 "type": pii_type,
-                "start": match.start(),
-                "end": match.end(),
+                "start": start,
+                "end": end,
             })
 
     return matches

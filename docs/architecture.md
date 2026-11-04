@@ -1,0 +1,19 @@
+# Architecture and technical decisions
+
+TrustShield is a local, synchronous FastAPI enforcement service with a separate Streamlit client. The production saved classifier remains unchanged. `src/settings.py` loads an existing trusted artifact, or the public synthetic development recipe when no artifact is available. Explicit missing artifact paths fail startup rather than silently selecting another model.
+
+`privacy_decision_engine.py` combines model score with `pii_rules.py`; `secret_detector.py` feeds the secret-first `policy_engine.py`. The score threshold remains .50. `gateway_service.py` is the single generation boundary: validate analysis/policy consistency, commit audit PENDING, execute only ALLOW, finalize. Review storage or required audit insertion failure prevents forwarding. BLOCK and HOLD cannot call either injected backend. The deterministic demo and HTTP Ollama adapter share this boundary.
+
+Audit storage contains enumerated categories/outcomes, UUIDs, timestamps, attempts, success and latency. The audit schema cannot accept prompts or responses. SQLite context managers explicitly close handles, including on rollback, so Windows temporary-directory cleanup works. Finalization failure after a successful remote execution is fundamentally different from insertion failure: execution cannot be undone. Return a conservative error and leave visible uncertainty; never silently retry. SQLite is appropriate for this single-machine project, not an exactly-once distributed execution protocol.
+
+Review tickets retain metadata only; the original prompt is unavailable to reviewers. Reject/rewrite actions are local CLI operations. A user must resubmit a revised prompt through all checks. There is deliberately no approval capability that can override a block.
+
+`HttpSafety` limits streamed bodies and sanitized responses. Request validation rejects extra fields, blank/non-string text, NUL and oversized input. The default local launcher suppresses access logging. Detection matching uses per-character NFKC plus original offset mapping; redaction never applies normalized indices directly to the original text. This handles fullwidth forms and ligature expansion but is not complete multilingual/obfuscation defense.
+
+The console sends draft checks to `/preview`, which performs analysis/policy only and writes neither audit nor review records. Preview is advisory; submission always repeats server checks. Raw input and generated output exist in UI process/session memory and on the local network path; they are not audit storage. No shared prompt cache or telemetry is added. HTML styling is static; untrusted generation is rendered as text.
+
+Monitoring endpoints share bearer and actual-peer restrictions. Docker explicitly trusts its private service subnet while retaining bearer authentication. Forwarded headers do not grant access. A file-based secret path supports Linux containers; DPAPI remains Windows-only. The report registry uses an allowlist and SHA256 index, checks available runtime inputs, and exposes selected aggregate fields. It is a trusted-filesystem integrity check, not cryptographic provenance. Container archival mode explicitly discloses its different synthetic model.
+
+The runtime image contains no original dataset/model. A small public synthetic model is created in a temporary directory in one build instruction; no raw generated CSV survives that layer. CI uses a separate target and source-only temporary workspace. Both deployment services run as UID 1000 with read-only root filesystems and constrained writable paths.
+
+Alternatives deferred: a shared production database, asynchronous durable work queue, authenticated reviewer identities, signed artifact registry, encrypted managed secrets and contextual detector promotion. Each would require a broader deployment and validation model than this local release candidate.
