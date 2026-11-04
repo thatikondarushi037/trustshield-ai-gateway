@@ -13,3 +13,8 @@ data/processed/
 
 models/
 mlruns/
+
+data/*.db
+data/*.db-*
+data/*.db-journal
+data/local-dev/
