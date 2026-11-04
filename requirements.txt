@@ -1,0 +1,10 @@
+# Direct dependencies verified with CPython 3.14 on Windows.
+# Transitive dependencies are resolved by pip; this is not a full lockfile.
+fastapi==0.143.2
+httpx==0.28.1
+joblib==1.6.0
+pandas==3.0.6
+pydantic==2.14.1
+scikit-learn==1.9.1
+streamlit==1.66.1
+uvicorn==0.54.0

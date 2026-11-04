@@ -7,7 +7,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 
-from pii_rules import detect_pii
+from src.pii_rules import detect_pii
 
 
 DATA_DIR = Path("data/processed")
