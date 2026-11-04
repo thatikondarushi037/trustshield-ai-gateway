@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "datasets": [
+    {"id": "raw_sample", "path": "data/raw/privacy_sample.csv", "role": "historical_input", "origin": "Local sample; upstream provenance not recorded", "group_namespace": "raw_sample"},
+    {"id": "legacy_corpus", "path": "data/processed/privacy_classification.csv", "role": "parent_corpus", "origin": "src/build_dataset.py: label 0 from mteb/banking77; label 1 from English ai4privacy/pii-masking-micro-100k. No revisions or row IDs retained", "group_namespace": "legacy"},
+    {"id": "legacy_matched", "path": "data/processed/privacy_classification_matched.csv", "role": "parent_corpus", "origin": "src/build_length_matched_dataset.py: length-matched subset of legacy_corpus", "group_namespace": "legacy"},
+    {"id": "legacy_train", "path": "data/processed/train.csv", "role": "historical_train", "origin": "src/create_splits.py: stratified random 70/15/15 split, seed 42", "group_namespace": "legacy"},
+    {"id": "legacy_validation", "path": "data/processed/validation.csv", "role": "historical_evaluation", "origin": "src/create_splits.py", "group_namespace": "legacy"},
+    {"id": "legacy_test", "path": "data/processed/test.csv", "role": "historical_evaluation", "origin": "src/create_splits.py", "group_namespace": "legacy"},
+    {"id": "combined", "path": "data/processed/privacy_v02_combined.csv", "role": "parent_corpus", "origin": "src/build_v02_dataset.py: legacy_matched plus synthetic generator", "group_namespace": "v02_templates"},
+    {"id": "pilot", "path": "data/processed/privacy_v02_pilot.csv", "role": "development", "origin": "src/build_v02_pilot.py: hand-authored synthetic pairs", "group_namespace": "pilot"},
+    {"id": "synthetic_train", "path": "data/processed/v02_synthetic_train.csv", "role": "active_train_component", "origin": "src/split_v02_synthetic.py and src/build_v02_multiocategory.py: GroupShuffleSplit by template_id, seed 42", "group_namespace": "v02_templates"},
+    {"id": "synthetic_validation", "path": "data/processed/v02_synthetic_validation.csv", "role": "evaluation", "origin": "src/split_v02_synthetic.py: 25% template groups", "group_namespace": "v02_templates"},
+    {"id": "hard", "path": "data/processed/v02_hard_examples.csv", "role": "active_train_component", "origin": "src/build_v02_hard_examples.py: hand-authored literal groups; derivation lineage not recorded", "group_namespace": "hard"},
+    {"id": "independent_eval", "path": "data/processed/v02_independent_eval.csv", "role": "evaluation", "origin": "src/build_v02_evaluation_set.py: hand-authored literals; used in development/threshold analysis", "group_namespace": "independent_eval"},
+    {"id": "challenge_csv", "path": "data/processed/privacy_challenge.csv", "role": "development_evaluation", "origin": "src/build_challange_dataset.py: hand-authored pairs", "group_namespace": "challenge_csv"},
+    {"id": "challenge_model", "path": "src/challenge_v02_model.py", "variable": "challenge_examples", "format": "text_label", "role": "development_evaluation", "origin": "Embedded challenge literals; AST extraction only", "group_namespace": "challenge_model"},
+    {"id": "challenge_comparison", "path": "src/compare_v02_hard_examples.py", "variable": "challenge_examples", "format": "text_label", "role": "development_evaluation", "origin": "Explicit reuse of the earlier 20 challenge examples for before/after hard-example comparison", "group_namespace": "challenge_model"},
+    {"id": "frozen_eval", "path": "src/evaluate_frozen_v02.py", "variable": "EXAMPLES", "format": "id_text_label", "role": "evaluation", "origin": "Embedded frozen-model evaluation literals; no documented row-level lineage", "group_namespace": "frozen_eval"},
+    {"id": "active_train", "members": ["synthetic_train", "hard"], "role": "active_train", "origin": "src/privacy_decision_engine.py: concatenation of both components; audit only, no training", "group_namespace": "mixed_active"}
+  ],
+  "boundaries": [
+    ["legacy_train", "legacy_validation"], ["legacy_train", "legacy_test"], ["legacy_validation", "legacy_test"],
+    ["synthetic_train", "synthetic_validation"],
+    ["active_train", "synthetic_validation"], ["active_train", "independent_eval"],
+    ["active_train", "challenge_csv"], ["active_train", "challenge_model"], ["active_train", "frozen_eval"]
+  ],
+  "near_comparisons": [
+    ["legacy_train", "legacy_validation"], ["legacy_train", "legacy_test"], ["legacy_validation", "legacy_test"],
+    ["synthetic_train", "synthetic_validation"], ["active_train", "synthetic_validation"],
+    ["active_train", "independent_eval"], ["active_train", "challenge_csv"],
+    ["active_train", "challenge_model"], ["active_train", "frozen_eval"],
+    ["hard", "independent_eval"], ["hard", "challenge_csv"], ["hard", "challenge_model"], ["hard", "frozen_eval"]
+  ],
+  "provenance_files": [
+    "src/build_dataset.py", "src/downlaod_dataset.py", "src/build_length_matched_dataset.py",
+    "src/create_splits.py", "src/data_split.py", "src/split_v02_synthetic.py",
+    "src/build_v02_multiocategory.py", "src/build_v02_dataset.py", "src/build_v02_pilot.py",
+    "src/build_v02_hard_examples.py", "src/build_v02_evaluation_set.py", "src/build_challange_dataset.py",
+    "src/privacy_decision_engine.py", "src/save_privacy_model.py", "src/compare_v02_hard_examples.py",
+    "src/challenge_v02_model.py", "src/evaluate_frozen_v02.py", "src/analyze_decision_thresholds.py"
+  ]
+}

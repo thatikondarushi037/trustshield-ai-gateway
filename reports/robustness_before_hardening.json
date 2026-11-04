@@ -1,0 +1,602 @@
+{
+  "artifact_sha256": "214ac08759da67bedf87a2ddd93de6a970a3f68edca35e2e2aa6b56c8d299fda",
+  "description": "Measured before V1 normalization-aware rule hardening; not an independent evaluation",
+  "development_only": true,
+  "result": {
+    "artifact_sha256": "214ac08759da67bedf87a2ddd93de6a970a3f68edca35e2e2aa6b56c8d299fda",
+    "development_only": true,
+    "limitations": "Generated correlated probes, not independent evidence. Masked cases have unknown ground truth and are excluded from binary metrics. Credential withholding is separate from privacy labels.",
+    "overall": {
+      "cases": 80,
+      "decisions": {
+        "ALLOW": 13,
+        "BLOCK": 35,
+        "HOLD": 32
+      },
+      "gateway_withholding": {
+        "confusion_matrix": [
+          [
+            3,
+            13
+          ],
+          [
+            8,
+            48
+          ]
+        ],
+        "f1": 0.8205128205128205,
+        "false_negative_rate": 0.14285714285714285,
+        "false_positive_rate": 0.8125,
+        "precision": 0.7868852459016393,
+        "recall": 0.8571428571428571,
+        "rows": 72
+      },
+      "hybrid_non_safe": {
+        "confusion_matrix": [
+          [
+            11,
+            13
+          ],
+          [
+            7,
+            41
+          ]
+        ],
+        "f1": 0.803921568627451,
+        "false_negative_rate": 0.14583333333333334,
+        "false_positive_rate": 0.5416666666666666,
+        "precision": 0.7592592592592593,
+        "recall": 0.8541666666666666,
+        "rows": 72
+      },
+      "miss_references": [
+        "email:fullwidth",
+        "pin:fullwidth",
+        "context:newlines",
+        "context:fullwidth",
+        "negation_disclosure:fullwidth"
+      ],
+      "ml_only": {
+        "confusion_matrix": [
+          [
+            11,
+            13
+          ],
+          [
+            20,
+            28
+          ]
+        ],
+        "f1": 0.6292134831460674,
+        "false_negative_rate": 0.4166666666666667,
+        "false_positive_rate": 0.5416666666666666,
+        "precision": 0.6829268292682927,
+        "recall": 0.5833333333333334,
+        "rows": 72
+      },
+      "unscored_ambiguous": 8
+    },
+    "status": "COMPLETE",
+    "tool_sha256": "0b09113cbe9a38c85ef266ae6b6062a44aaf09b0f7fc21b242f34407a7765fd3",
+    "variations": {
+      "fullwidth": {
+        "cases": 10,
+        "decisions": {
+          "ALLOW": 10
+        },
+        "gateway_withholding": {
+          "confusion_matrix": [
+            [
+              2,
+              0
+            ],
+            [
+              7,
+              0
+            ]
+          ],
+          "f1": 0.0,
+          "false_negative_rate": 1.0,
+          "false_positive_rate": 0.0,
+          "precision": null,
+          "recall": 0.0,
+          "rows": 9
+        },
+        "hybrid_non_safe": {
+          "confusion_matrix": [
+            [
+              3,
+              0
+            ],
+            [
+              6,
+              0
+            ]
+          ],
+          "f1": 0.0,
+          "false_negative_rate": 1.0,
+          "false_positive_rate": 0.0,
+          "precision": null,
+          "recall": 0.0,
+          "rows": 9
+        },
+        "miss_references": [
+          "email:fullwidth",
+          "pin:fullwidth",
+          "context:fullwidth",
+          "negation_disclosure:fullwidth",
+          "secret:fullwidth"
+        ],
+        "ml_only": {
+          "confusion_matrix": [
+            [
+              3,
+              0
+            ],
+            [
+              6,
+              0
+            ]
+          ],
+          "f1": 0.0,
+          "false_negative_rate": 1.0,
+          "false_positive_rate": 0.0,
+          "precision": null,
+          "recall": 0.0,
+          "rows": 9
+        },
+        "unscored_ambiguous": 1
+      },
+      "long_prefix": {
+        "cases": 10,
+        "decisions": {
+          "BLOCK": 5,
+          "HOLD": 5
+        },
+        "gateway_withholding": {
+          "confusion_matrix": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "f1": 0.875,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 1.0,
+          "precision": 0.7777777777777778,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "hybrid_non_safe": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "f1": 0.8571428571428571,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.75,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "miss_references": [],
+        "ml_only": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "f1": 0.6666666666666666,
+          "false_negative_rate": 0.3333333333333333,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "rows": 9
+        },
+        "unscored_ambiguous": 1
+      },
+      "long_suffix": {
+        "cases": 10,
+        "decisions": {
+          "BLOCK": 5,
+          "HOLD": 5
+        },
+        "gateway_withholding": {
+          "confusion_matrix": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "f1": 0.875,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 1.0,
+          "precision": 0.7777777777777778,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "hybrid_non_safe": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "f1": 0.8571428571428571,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.75,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "miss_references": [],
+        "ml_only": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "f1": 0.6666666666666666,
+          "false_negative_rate": 0.3333333333333333,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "rows": 9
+        },
+        "unscored_ambiguous": 1
+      },
+      "newlines": {
+        "cases": 10,
+        "decisions": {
+          "ALLOW": 1,
+          "BLOCK": 5,
+          "HOLD": 4
+        },
+        "gateway_withholding": {
+          "confusion_matrix": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              6
+            ]
+          ],
+          "f1": 0.8,
+          "false_negative_rate": 0.14285714285714285,
+          "false_positive_rate": 1.0,
+          "precision": 0.75,
+          "recall": 0.8571428571428571,
+          "rows": 9
+        },
+        "hybrid_non_safe": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              5
+            ]
+          ],
+          "f1": 0.7692307692307693,
+          "false_negative_rate": 0.16666666666666666,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.7142857142857143,
+          "recall": 0.8333333333333334,
+          "rows": 9
+        },
+        "miss_references": [
+          "context:newlines"
+        ],
+        "ml_only": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "f1": 0.6666666666666666,
+          "false_negative_rate": 0.3333333333333333,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "rows": 9
+        },
+        "unscored_ambiguous": 1
+      },
+      "nfkc_recovery": {
+        "cases": 10,
+        "decisions": {
+          "BLOCK": 5,
+          "HOLD": 5
+        },
+        "gateway_withholding": {
+          "confusion_matrix": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "f1": 0.875,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 1.0,
+          "precision": 0.7777777777777778,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "hybrid_non_safe": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "f1": 0.8571428571428571,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.75,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "miss_references": [],
+        "ml_only": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "f1": 0.6666666666666666,
+          "false_negative_rate": 0.3333333333333333,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "rows": 9
+        },
+        "unscored_ambiguous": 1
+      },
+      "original": {
+        "cases": 10,
+        "decisions": {
+          "BLOCK": 5,
+          "HOLD": 5
+        },
+        "gateway_withholding": {
+          "confusion_matrix": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "f1": 0.875,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 1.0,
+          "precision": 0.7777777777777778,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "hybrid_non_safe": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "f1": 0.8571428571428571,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.75,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "miss_references": [],
+        "ml_only": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "f1": 0.6666666666666666,
+          "false_negative_rate": 0.3333333333333333,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "rows": 9
+        },
+        "unscored_ambiguous": 1
+      },
+      "punctuation": {
+        "cases": 10,
+        "decisions": {
+          "ALLOW": 2,
+          "BLOCK": 5,
+          "HOLD": 3
+        },
+        "gateway_withholding": {
+          "confusion_matrix": [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "f1": 0.9333333333333333,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 0.5,
+          "precision": 0.875,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "hybrid_non_safe": {
+          "confusion_matrix": [
+            [
+              2,
+              1
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "f1": 0.9230769230769231,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 0.3333333333333333,
+          "precision": 0.8571428571428571,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "miss_references": [],
+        "ml_only": {
+          "confusion_matrix": [
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "f1": 0.7272727272727273,
+          "false_negative_rate": 0.3333333333333333,
+          "false_positive_rate": 0.3333333333333333,
+          "precision": 0.8,
+          "recall": 0.6666666666666666,
+          "rows": 9
+        },
+        "unscored_ambiguous": 1
+      },
+      "whitespace": {
+        "cases": 10,
+        "decisions": {
+          "BLOCK": 5,
+          "HOLD": 5
+        },
+        "gateway_withholding": {
+          "confusion_matrix": [
+            [
+              0,
+              2
+            ],
+            [
+              0,
+              7
+            ]
+          ],
+          "f1": 0.875,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 1.0,
+          "precision": 0.7777777777777778,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "hybrid_non_safe": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              6
+            ]
+          ],
+          "f1": 0.8571428571428571,
+          "false_negative_rate": 0.0,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.75,
+          "recall": 1.0,
+          "rows": 9
+        },
+        "miss_references": [],
+        "ml_only": {
+          "confusion_matrix": [
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              4
+            ]
+          ],
+          "f1": 0.6666666666666666,
+          "false_negative_rate": 0.3333333333333333,
+          "false_positive_rate": 0.6666666666666666,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "rows": 9
+        },
+        "unscored_ambiguous": 1
+      }
+    }
+  },
+  "rule_sha256": {
+    "src/pii_rules.py": "3bc8a3c1d9b0107d7c25705d83159e2f2dc4ac54b20bf64c959373fa74462d3f",
+    "src/secret_detector.py": "1812078fae68aecbcb6f11588e4e6d4fe4ce50881a7ee251a1a37672cf155a18"
+  },
+  "status": "COMPLETE"
+}

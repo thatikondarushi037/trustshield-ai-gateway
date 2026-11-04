@@ -1,4 +1,5 @@
 import re
+from src.text_normalization import matching_view, original_span
 
 
 
@@ -25,13 +26,15 @@ SECRET_PATTERNS = {
 
 def detect_secrets(text: str) -> list[dict]:
     matches = []
+    view, positions = matching_view(text)
 
     for secret_type, pattern in SECRET_PATTERNS.items():
-        for match in pattern.finditer(text):
+        for match in pattern.finditer(view):
+            start, end = original_span(match.start(), match.end(), positions)
             matches.append({
                 "type": secret_type,
-                "start": match.start(),
-                "end": match.end(),
+                "start": start,
+                "end": end,
             })
 
     return sorted(matches, key=lambda item: item["start"])

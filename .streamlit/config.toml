@@ -1,0 +1,13 @@
+[theme]
+base = "dark"
+primaryColor = "#53cfc2"
+backgroundColor = "#0b101b"
+secondaryBackgroundColor = "#131e30"
+textColor = "#e5edf6"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+maxUploadSize = 1

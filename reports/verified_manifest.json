@@ -1,0 +1,9 @@
+{
+  "kind": "local_verified_aggregate_index_v1",
+  "reports": {
+    "dataset_reliability.json": "ab10ebb4774e38db7786c978fa316bba1753852e732783e7d6ef3f46fa76ab0d",
+    "holdout_preparation.json": "8c1a8ed3111361b2943b8f2ecad05e5aa816326d39bc4f2a2a486bf6d765c805",
+    "ml_experiments.json": "22bf5f4b1de6250ef96370d6605b9188bf6e682e6f65b3498944be7b5112b7e5"
+  },
+  "scope": "Local integrity/privacy checks, not a signature or independent validation"
+}

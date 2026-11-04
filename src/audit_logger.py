@@ -10,8 +10,9 @@ from pathlib import Path
 
 from src.pii_rules import PII_PATTERNS, CONTEXT_PATTERNS
 from src.secret_detector import SECRET_PATTERNS
+from src.settings import data_directory
 
-DB_PATH = Path(__file__).resolve().parents[1] / "data" / "audit.db"
+DB_PATH = data_directory() / "audit.db"
 
 
 @contextmanager

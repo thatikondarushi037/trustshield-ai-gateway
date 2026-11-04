@@ -1,8 +1,9 @@
 
 import httpx
+import os
 
-OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
-MODEL_NAME = "llama3.2:1b"
+OLLAMA_URL = os.environ.get("TRUSTSHIELD_OLLAMA_URL", "http://127.0.0.1:11434/api/generate")
+MODEL_NAME = os.environ.get("TRUSTSHIELD_OLLAMA_MODEL", "llama3.2:1b")
 
 
 def generate_local_response(prompt: str) -> str:
@@ -19,7 +20,7 @@ def generate_local_response(prompt: str) -> str:
         },
     }
 
-    with httpx.Client(timeout=60.0) as client:
+    with httpx.Client(timeout=60.0, trust_env=False) as client:
         result = client.post(
             OLLAMA_URL,
             json=payload

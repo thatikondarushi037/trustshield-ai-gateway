@@ -1,0 +1,461 @@
+{
+  "$defs": {
+    "Adjudication": {
+      "additionalProperties": false,
+      "properties": {
+        "adjudicated_at": {
+          "format": "date-time",
+          "title": "Adjudicated At",
+          "type": "string"
+        },
+        "adjudicator_id": {
+          "format": "uuid",
+          "title": "Adjudicator Id",
+          "type": "string"
+        },
+        "final_label": {
+          "enum": [
+            "SAFE",
+            "SENSITIVE",
+            "EXCLUDE"
+          ],
+          "title": "Final Label",
+          "type": "string"
+        },
+        "guideline_version": {
+          "pattern": "^[A-Za-z0-9_.:-]{1,100}$",
+          "title": "Guideline Version",
+          "type": "string"
+        },
+        "reason_code": {
+          "enum": [
+            "LABEL_RESOLVED",
+            "AMBIGUOUS_EXCLUDED",
+            "OUT_OF_SCOPE_EXCLUDED"
+          ],
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "record_id": {
+          "format": "uuid",
+          "title": "Record Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "record_id",
+        "adjudicator_id",
+        "final_label",
+        "guideline_version",
+        "reason_code",
+        "adjudicated_at"
+      ],
+      "title": "Adjudication",
+      "type": "object"
+    },
+    "Annotation": {
+      "additionalProperties": false,
+      "properties": {
+        "annotated_at": {
+          "format": "date-time",
+          "title": "Annotated At",
+          "type": "string"
+        },
+        "annotator_id": {
+          "format": "uuid",
+          "title": "Annotator Id",
+          "type": "string"
+        },
+        "guideline_version": {
+          "pattern": "^[A-Za-z0-9_.:-]{1,100}$",
+          "title": "Guideline Version",
+          "type": "string"
+        },
+        "independent_blind": {
+          "const": true,
+          "title": "Independent Blind",
+          "type": "boolean"
+        },
+        "label": {
+          "enum": [
+            "SAFE",
+            "SENSITIVE",
+            "UNCERTAIN",
+            "OUT_OF_SCOPE"
+          ],
+          "title": "Label",
+          "type": "string"
+        },
+        "reason_code": {
+          "enum": [
+            "CONCEPT_ONLY",
+            "OBSERVED_DISCLOSURE",
+            "AMBIGUOUS",
+            "OUT_OF_SCOPE"
+          ],
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "record_id": {
+          "format": "uuid",
+          "title": "Record Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "record_id",
+        "annotator_id",
+        "label",
+        "guideline_version",
+        "independent_blind",
+        "reason_code",
+        "annotated_at"
+      ],
+      "title": "Annotation",
+      "type": "object"
+    },
+    "Collection": {
+      "additionalProperties": false,
+      "properties": {
+        "custodian_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Custodian Id"
+        },
+        "independence_attested": {
+          "title": "Independence Attested",
+          "type": "boolean"
+        },
+        "state": {
+          "enum": [
+            "PREPARATION",
+            "COLLECTED_REVIEWED"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "version": {
+          "pattern": "^[A-Za-z0-9_.:-]{1,100}$",
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "state",
+        "independence_attested"
+      ],
+      "title": "Collection",
+      "type": "object"
+    },
+    "LeakageReview": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Candidate Sha256",
+          "type": "string"
+        },
+        "disposition": {
+          "enum": [
+            "BENIGN",
+            "RELATED",
+            "UNRESOLVED"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        },
+        "known_ref": {
+          "pattern": "^[A-Za-z0-9_./:-]{1,180}$",
+          "title": "Known Ref",
+          "type": "string"
+        },
+        "known_text_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Known Text Sha256",
+          "type": "string"
+        },
+        "reason_code": {
+          "enum": [
+            "DISTINCT_INTENT",
+            "GENERIC_WORDING",
+            "SHARED_TEMPLATE",
+            "UNRESOLVED"
+          ],
+          "title": "Reason Code",
+          "type": "string"
+        },
+        "record_id": {
+          "format": "uuid",
+          "title": "Record Id",
+          "type": "string"
+        },
+        "reviewer_id": {
+          "format": "uuid",
+          "title": "Reviewer Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "record_id",
+        "known_ref",
+        "candidate_sha256",
+        "known_text_sha256",
+        "reviewer_id",
+        "disposition",
+        "reason_code"
+      ],
+      "title": "LeakageReview",
+      "type": "object"
+    },
+    "Record": {
+      "additionalProperties": false,
+      "properties": {
+        "author_group_id": {
+          "pattern": "^[A-Za-z0-9_.:-]{1,100}$",
+          "title": "Author Group Id",
+          "type": "string"
+        },
+        "category": {
+          "enum": [
+            "EMAIL",
+            "PIN",
+            "ACCOUNT",
+            "PHONE",
+            "ADDRESS",
+            "CREDENTIAL",
+            "MIXED"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "collected_at": {
+          "format": "date-time",
+          "title": "Collected At",
+          "type": "string"
+        },
+        "content_kind": {
+          "const": "FICTIONAL",
+          "title": "Content Kind",
+          "type": "string"
+        },
+        "derivation_parent_id": {
+          "anyOf": [
+            {
+              "format": "uuid",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Derivation Parent Id"
+        },
+        "document_group_id": {
+          "pattern": "^[A-Za-z0-9_.:-]{1,100}$",
+          "title": "Document Group Id",
+          "type": "string"
+        },
+        "group_namespace": {
+          "pattern": "^[A-Za-z0-9_.:-]{1,100}$",
+          "title": "Group Namespace",
+          "type": "string"
+        },
+        "language": {
+          "const": "en",
+          "title": "Language",
+          "type": "string"
+        },
+        "partition": {
+          "enum": [
+            "DEVELOPMENT",
+            "HOLDOUT"
+          ],
+          "title": "Partition",
+          "type": "string"
+        },
+        "person_group_id": {
+          "pattern": "^[A-Za-z0-9_.:-]{1,100}$",
+          "title": "Person Group Id",
+          "type": "string"
+        },
+        "record_id": {
+          "format": "uuid",
+          "title": "Record Id",
+          "type": "string"
+        },
+        "source_id": {
+          "format": "uuid",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_revision": {
+          "pattern": "^[A-Za-z0-9_.:-]{1,100}$",
+          "title": "Source Revision",
+          "type": "string"
+        },
+        "template_family_id": {
+          "pattern": "^[A-Za-z0-9_.:-]{1,100}$",
+          "title": "Template Family Id",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 20000,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "record_id",
+        "text",
+        "source_id",
+        "source_revision",
+        "collected_at",
+        "group_namespace",
+        "template_family_id",
+        "author_group_id",
+        "document_group_id",
+        "person_group_id",
+        "language",
+        "category",
+        "partition",
+        "content_kind"
+      ],
+      "title": "Record",
+      "type": "object"
+    },
+    "Source": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_file": {
+          "pattern": "^evidence/[A-Za-z0-9_.-]+$",
+          "title": "Evidence File",
+          "type": "string"
+        },
+        "evidence_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Evidence Sha256",
+          "type": "string"
+        },
+        "independence_attested": {
+          "const": true,
+          "title": "Independence Attested",
+          "type": "boolean"
+        },
+        "license_or_consent_verified": {
+          "const": true,
+          "title": "License Or Consent Verified",
+          "type": "boolean"
+        },
+        "model_outputs_exposure": {
+          "const": "NONE",
+          "title": "Model Outputs Exposure",
+          "type": "string"
+        },
+        "origin_kind": {
+          "enum": [
+            "INDEPENDENT_AUTHOR",
+            "LICENSED_CORPUS"
+          ],
+          "title": "Origin Kind",
+          "type": "string"
+        },
+        "repository_examples_exposure": {
+          "const": "NONE",
+          "title": "Repository Examples Exposure",
+          "type": "string"
+        },
+        "revision": {
+          "pattern": "^[A-Za-z0-9_.:-]{1,100}$",
+          "title": "Revision",
+          "type": "string"
+        },
+        "source_id": {
+          "format": "uuid",
+          "title": "Source Id",
+          "type": "string"
+        },
+        "verified_by": {
+          "format": "uuid",
+          "title": "Verified By",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "revision",
+        "origin_kind",
+        "evidence_file",
+        "evidence_sha256",
+        "license_or_consent_verified",
+        "independence_attested",
+        "repository_examples_exposure",
+        "model_outputs_exposure",
+        "verified_by"
+      ],
+      "title": "Source",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "adjudications": {
+      "items": {
+        "$ref": "#/$defs/Adjudication"
+      },
+      "title": "Adjudications",
+      "type": "array"
+    },
+    "annotations": {
+      "items": {
+        "$ref": "#/$defs/Annotation"
+      },
+      "title": "Annotations",
+      "type": "array"
+    },
+    "collection": {
+      "$ref": "#/$defs/Collection"
+    },
+    "leakage_reviews": {
+      "items": {
+        "$ref": "#/$defs/LeakageReview"
+      },
+      "title": "Leakage Reviews",
+      "type": "array"
+    },
+    "records": {
+      "items": {
+        "$ref": "#/$defs/Record"
+      },
+      "title": "Records",
+      "type": "array"
+    },
+    "sources": {
+      "items": {
+        "$ref": "#/$defs/Source"
+      },
+      "title": "Sources",
+      "type": "array"
+    }
+  },
+  "required": [
+    "collection",
+    "records",
+    "sources",
+    "annotations",
+    "adjudications",
+    "leakage_reviews"
+  ],
+  "title": "Bundle",
+  "type": "object"
+}

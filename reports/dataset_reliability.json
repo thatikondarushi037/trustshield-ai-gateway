@@ -1,0 +1,727 @@
+{
+  "datasets": {
+    "challenge_csv": {
+      "error_references": {
+        "hybrid_false_negative": [],
+        "hybrid_false_positive": [],
+        "ml_false_negative": [],
+        "ml_false_positive": []
+      },
+      "excluded_rows": 0,
+      "hybrid_decision_matrix": [
+        [
+          10,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          6
+        ]
+      ],
+      "hybrid_non_safe": {
+        "confusion_matrix": [
+          [
+            10,
+            0
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "f1": 1.0,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "rows": 20
+      },
+      "independence": "DEVELOPMENT_EXPOSED_OR_UNVERIFIED_AUTHORSHIP_NOT_NEW_HOLDOUT",
+      "ml_only": {
+        "confusion_matrix": [
+          [
+            10,
+            0
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "f1": 1.0,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "rows": 20
+      },
+      "normalized_overlap_with_current_training_inputs": 0,
+      "review_count": 4,
+      "rows": 20,
+      "valid_rows": 20
+    },
+    "challenge_model": {
+      "error_references": {
+        "hybrid_false_negative": [],
+        "hybrid_false_positive": [
+          "challenge_model:2",
+          "challenge_model:18",
+          "challenge_model:19"
+        ],
+        "ml_false_negative": [],
+        "ml_false_positive": [
+          "challenge_model:2",
+          "challenge_model:18",
+          "challenge_model:19"
+        ]
+      },
+      "excluded_rows": 0,
+      "hybrid_decision_matrix": [
+        [
+          7,
+          3,
+          0
+        ],
+        [
+          0,
+          2,
+          8
+        ]
+      ],
+      "hybrid_non_safe": {
+        "confusion_matrix": [
+          [
+            7,
+            3
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "f1": 0.8695652173913043,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.3,
+        "precision": 0.7692307692307693,
+        "recall": 1.0,
+        "rows": 20
+      },
+      "independence": "DEVELOPMENT_EXPOSED_OR_UNVERIFIED_AUTHORSHIP_NOT_NEW_HOLDOUT",
+      "ml_only": {
+        "confusion_matrix": [
+          [
+            7,
+            3
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "f1": 0.8695652173913043,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.3,
+        "precision": 0.7692307692307693,
+        "recall": 1.0,
+        "rows": 20
+      },
+      "normalized_overlap_with_current_training_inputs": 0,
+      "review_count": 5,
+      "rows": 20,
+      "valid_rows": 20
+    },
+    "frozen_eval": {
+      "error_references": {
+        "hybrid_false_negative": [],
+        "hybrid_false_positive": [
+          "frozen_eval:18"
+        ],
+        "ml_false_negative": [
+          "frozen_eval:11"
+        ],
+        "ml_false_positive": [
+          "frozen_eval:18"
+        ]
+      },
+      "excluded_rows": 0,
+      "hybrid_decision_matrix": [
+        [
+          9,
+          1,
+          0
+        ],
+        [
+          0,
+          8,
+          2
+        ]
+      ],
+      "hybrid_non_safe": {
+        "confusion_matrix": [
+          [
+            9,
+            1
+          ],
+          [
+            0,
+            10
+          ]
+        ],
+        "f1": 0.9523809523809523,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.1,
+        "precision": 0.9090909090909091,
+        "recall": 1.0,
+        "rows": 20
+      },
+      "independence": "DEVELOPMENT_EXPOSED_OR_UNVERIFIED_AUTHORSHIP_NOT_NEW_HOLDOUT",
+      "ml_only": {
+        "confusion_matrix": [
+          [
+            9,
+            1
+          ],
+          [
+            1,
+            9
+          ]
+        ],
+        "f1": 0.9,
+        "false_negative_rate": 0.1,
+        "false_positive_rate": 0.1,
+        "precision": 0.9,
+        "recall": 0.9,
+        "rows": 20
+      },
+      "normalized_overlap_with_current_training_inputs": 0,
+      "review_count": 9,
+      "rows": 20,
+      "valid_rows": 20
+    },
+    "independent_eval": {
+      "error_references": {
+        "hybrid_false_negative": [],
+        "hybrid_false_positive": [
+          "independent_eval:2",
+          "independent_eval:11",
+          "independent_eval:26"
+        ],
+        "ml_false_negative": [
+          "independent_eval:6",
+          "independent_eval:7",
+          "independent_eval:40"
+        ],
+        "ml_false_positive": [
+          "independent_eval:2",
+          "independent_eval:11",
+          "independent_eval:26"
+        ]
+      },
+      "excluded_rows": 0,
+      "hybrid_decision_matrix": [
+        [
+          17,
+          3,
+          0
+        ],
+        [
+          0,
+          16,
+          4
+        ]
+      ],
+      "hybrid_non_safe": {
+        "confusion_matrix": [
+          [
+            17,
+            3
+          ],
+          [
+            0,
+            20
+          ]
+        ],
+        "f1": 0.9302325581395349,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.15,
+        "precision": 0.8695652173913043,
+        "recall": 1.0,
+        "rows": 40
+      },
+      "independence": "DEVELOPMENT_EXPOSED_OR_UNVERIFIED_AUTHORSHIP_NOT_NEW_HOLDOUT",
+      "ml_only": {
+        "confusion_matrix": [
+          [
+            17,
+            3
+          ],
+          [
+            3,
+            17
+          ]
+        ],
+        "f1": 0.85,
+        "false_negative_rate": 0.15,
+        "false_positive_rate": 0.15,
+        "precision": 0.85,
+        "recall": 0.85,
+        "rows": 40
+      },
+      "normalized_overlap_with_current_training_inputs": 0,
+      "review_count": 19,
+      "rows": 40,
+      "valid_rows": 40
+    },
+    "legacy_test": {
+      "error_references": {
+        "hybrid_false_negative": [
+          "legacy_test:4",
+          "legacy_test:5",
+          "legacy_test:10",
+          "legacy_test:16",
+          "legacy_test:24"
+        ],
+        "hybrid_false_positive": [
+          "legacy_test:1",
+          "legacy_test:3",
+          "legacy_test:6",
+          "legacy_test:13",
+          "legacy_test:19"
+        ],
+        "ml_false_negative": [
+          "legacy_test:4",
+          "legacy_test:5",
+          "legacy_test:10",
+          "legacy_test:16",
+          "legacy_test:24"
+        ],
+        "ml_false_positive": [
+          "legacy_test:1",
+          "legacy_test:3",
+          "legacy_test:6",
+          "legacy_test:13",
+          "legacy_test:19"
+        ]
+      },
+      "excluded_rows": 0,
+      "hybrid_decision_matrix": [
+        [
+          26,
+          33,
+          0
+        ],
+        [
+          14,
+          20,
+          24
+        ]
+      ],
+      "hybrid_non_safe": {
+        "confusion_matrix": [
+          [
+            26,
+            33
+          ],
+          [
+            14,
+            44
+          ]
+        ],
+        "f1": 0.6518518518518519,
+        "false_negative_rate": 0.2413793103448276,
+        "false_positive_rate": 0.559322033898305,
+        "precision": 0.5714285714285714,
+        "recall": 0.7586206896551724,
+        "rows": 117
+      },
+      "independence": "UNCERTAIN_LEGACY_SOURCE_LINEAGE_AND_NEAR_DUPLICATES",
+      "ml_only": {
+        "confusion_matrix": [
+          [
+            26,
+            33
+          ],
+          [
+            18,
+            40
+          ]
+        ],
+        "f1": 0.6106870229007634,
+        "false_negative_rate": 0.3103448275862069,
+        "false_positive_rate": 0.559322033898305,
+        "precision": 0.547945205479452,
+        "recall": 0.6896551724137931,
+        "rows": 117
+      },
+      "normalized_overlap_with_current_training_inputs": 0,
+      "review_count": 53,
+      "rows": 117,
+      "valid_rows": 117
+    },
+    "legacy_validation": {
+      "error_references": {
+        "hybrid_false_negative": [
+          "legacy_validation:1",
+          "legacy_validation:4",
+          "legacy_validation:9",
+          "legacy_validation:13",
+          "legacy_validation:14"
+        ],
+        "hybrid_false_positive": [
+          "legacy_validation:2",
+          "legacy_validation:3",
+          "legacy_validation:5",
+          "legacy_validation:27",
+          "legacy_validation:28"
+        ],
+        "ml_false_negative": [
+          "legacy_validation:1",
+          "legacy_validation:4",
+          "legacy_validation:9",
+          "legacy_validation:13",
+          "legacy_validation:14"
+        ],
+        "ml_false_positive": [
+          "legacy_validation:2",
+          "legacy_validation:3",
+          "legacy_validation:5",
+          "legacy_validation:27",
+          "legacy_validation:28"
+        ]
+      },
+      "excluded_rows": 0,
+      "hybrid_decision_matrix": [
+        [
+          25,
+          33,
+          0
+        ],
+        [
+          19,
+          23,
+          17
+        ]
+      ],
+      "hybrid_non_safe": {
+        "confusion_matrix": [
+          [
+            25,
+            33
+          ],
+          [
+            19,
+            40
+          ]
+        ],
+        "f1": 0.6060606060606061,
+        "false_negative_rate": 0.3220338983050847,
+        "false_positive_rate": 0.5689655172413793,
+        "precision": 0.547945205479452,
+        "recall": 0.6779661016949152,
+        "rows": 117
+      },
+      "independence": "UNCERTAIN_LEGACY_SOURCE_LINEAGE_AND_NEAR_DUPLICATES",
+      "ml_only": {
+        "confusion_matrix": [
+          [
+            25,
+            33
+          ],
+          [
+            20,
+            39
+          ]
+        ],
+        "f1": 0.5954198473282443,
+        "false_negative_rate": 0.3389830508474576,
+        "false_positive_rate": 0.5689655172413793,
+        "precision": 0.5416666666666666,
+        "recall": 0.6610169491525424,
+        "rows": 117
+      },
+      "normalized_overlap_with_current_training_inputs": 0,
+      "review_count": 56,
+      "rows": 117,
+      "valid_rows": 117
+    },
+    "synthetic_validation": {
+      "error_references": {
+        "hybrid_false_negative": [],
+        "hybrid_false_positive": [],
+        "ml_false_negative": [],
+        "ml_false_positive": []
+      },
+      "excluded_rows": 0,
+      "hybrid_decision_matrix": [
+        [
+          5,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          3
+        ]
+      ],
+      "hybrid_non_safe": {
+        "confusion_matrix": [
+          [
+            5,
+            0
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "f1": 1.0,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "rows": 10
+      },
+      "independence": "TEMPLATE_SEPARATED_BUT_DEVELOPMENT_EXPOSED",
+      "ml_only": {
+        "confusion_matrix": [
+          [
+            5,
+            0
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "f1": 1.0,
+        "false_negative_rate": 0.0,
+        "false_positive_rate": 0.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "rows": 10
+      },
+      "normalized_overlap_with_current_training_inputs": 0,
+      "review_count": 2,
+      "rows": 10,
+      "valid_rows": 10
+    }
+  },
+  "environment": {
+    "python": "3.14.5",
+    "scikit_learn": "1.9.1"
+  },
+  "input_sha256": {
+    "data/processed/privacy_challenge.csv": "bcb552405b9005fefa240e31f3f79d3b225706a1353cd29fd190acfb0bb4833e",
+    "data/processed/privacy_classification.csv": "be5d1f1cea5ca7e87be2fd5eeb889a1e6856682aa438f3ec2c5d4bf63f9e9c58",
+    "data/processed/privacy_classification_matched.csv": "f756b6a7c02f3ab50f1585e3ff1de1e6bec2cb433d765bf09b09798da68b52ef",
+    "data/processed/privacy_v02_combined.csv": "60a303d4caab84a17788b18b8bd79080271d5c238501043ac00c963b4a0be50f",
+    "data/processed/privacy_v02_pilot.csv": "779e218d061f3af8db9963c1a0778cb5f358741b825096a9ed0637d6ffdad0e3",
+    "data/processed/test.csv": "51c6bd080a7e33a31f8f5ba487258db4d1fdeab7000719a9df714a5e4754f185",
+    "data/processed/train.csv": "f64bac18aea73e814138a9cc2ea6f36eb67e56484c4880745b39813ab1137e67",
+    "data/processed/v02_hard_examples.csv": "66c9fb7b70377c2744888cc8b7c4940a07cd7e29eec157d234451d32ffa11ca3",
+    "data/processed/v02_independent_eval.csv": "8348df4811355510364603e3adb02c8f67aa57d945949e99410ff8816748b410",
+    "data/processed/v02_synthetic_train.csv": "eecc3f2d3698dffb856e40e68eab1084902930df24483615104fdc620fee7189",
+    "data/processed/v02_synthetic_validation.csv": "b1ce23396e2a25bfb81322700eace0a7e353171f5b7adb8458c23a60b741ef31",
+    "data/processed/validation.csv": "f759becb8a2b63623604a56f0932a5c36fa1fe6156b7f4ae75b43c53feeddd03",
+    "data/raw/privacy_sample.csv": "9f68579be4f0e9438f4f5995281e988c745f66f3b28107756510bf5f054ea867",
+    "src/challenge_v02_model.py": "51c71c4c7e7f85181582c160315dcb1b879c3873339ae06a85b37fed056cd34e",
+    "src/compare_v02_hard_examples.py": "161e5f638db61c7e65da2acdc671d3e0672accac41acaf6601002affcb743754",
+    "src/evaluate_frozen_v02.py": "349a3d11187b8c42cd7246d1c2a2c151d31b0e5b48efb481b3a6d31b72f85dcd"
+  },
+  "live_consistency": {
+    "checked": 344,
+    "endpoint": "http://127.0.0.1:8000/analyze",
+    "mismatch_references": [],
+    "mismatches": 0,
+    "scope": "Agreement on checked rows and rounded scores only; not model identity or independence proof. No backend, gateway, or audit-write call was made.",
+    "status": "COMPLETE"
+  },
+  "manifest_sha256": "6404f839b29744bae9c722b0fb672b1c47e1809cd4e64590ccd74650565ba735",
+  "missing_inputs": [],
+  "model": {
+    "classes": [
+      0,
+      1
+    ],
+    "path": "models/privacy_model_v02.joblib",
+    "scope": "Existing artifact with current production analyze_message logic; no fit or dump",
+    "sha256": "214ac08759da67bedf87a2ddd93de6a970a3f68edca35e2e2aa6b56c8d299fda",
+    "training_lineage": "Unverified: artifact lacks a signed training/input manifest",
+    "type": "Pipeline"
+  },
+  "pair_reviews": [
+    {
+      "audit_inputs_match": true,
+      "classification": "INCONCLUSIVE",
+      "function_word_or_punctuation_edits_only": false,
+      "left": "legacy_train:451",
+      "negation_edit": true,
+      "normalized_character_ratio": 0.9539473684210527,
+      "prior_audit_cosine": 0.915323,
+      "rationale": "High lexical overlap includes negation or content changes; similarity cannot establish semantic equivalence or common origin.",
+      "review_method": "Deterministic local lexical inspection; not a semantic or provenance oracle",
+      "right": "legacy_validation:87",
+      "same_label": true
+    },
+    {
+      "audit_inputs_match": true,
+      "classification": "LIKELY_DUPLICATE",
+      "function_word_or_punctuation_edits_only": true,
+      "left": "legacy_train:138",
+      "negation_edit": false,
+      "normalized_character_ratio": 0.9873417721518988,
+      "prior_audit_cosine": 0.976999,
+      "rationale": "Identical normalized text or near-identical wording with only function-word/punctuation edits; shared origin not proven.",
+      "review_method": "Deterministic local lexical inspection; not a semantic or provenance oracle",
+      "right": "legacy_test:70",
+      "same_label": true
+    }
+  ],
+  "prior_audit_sha256": "62d4c7c08df7d85e57fb619097b07ca4288de124f16408bc93a5c873d1e20469",
+  "privacy_check": {
+    "input_records_checked": 8600,
+    "raw_text_matches": 0
+  },
+  "protected_inputs_unchanged": true,
+  "semantics": {
+    "decision_threshold_unchanged": 0.5,
+    "hybrid_decision_columns": [
+      "SAFE",
+      "REVIEW",
+      "SENSITIVE"
+    ],
+    "hybrid_positive": "REVIEW or SENSITIVE (not automatic SAFE); REVIEW is abstention, not confirmed disclosure",
+    "matrix_order": "[[TN, FP], [FN, TP]]",
+    "pooling": "None; sources, development sets and reused examples are not independent trials",
+    "positive_label": 1,
+    "undefined_metrics": "null when denominator is zero"
+  },
+  "source_analysis": {
+    "builder_declared_label_origin": {
+      "0": "mteb/banking77",
+      "1": "ai4privacy/pii-masking-micro-100k English source_text"
+    },
+    "interpretation": "The legacy builder assigns labels by collection, perfectly confounding declared source with assigned label by construction. This is not verified row-level provenance or proof that this model relies on source.",
+    "observed": {
+      "challenge_comparison": {
+        "NOT_RECORDED": {
+          "0": 10,
+          "1": 10
+        }
+      },
+      "challenge_csv": {
+        "NOT_RECORDED": {
+          "0": 10,
+          "1": 10
+        }
+      },
+      "challenge_model": {
+        "NOT_RECORDED": {
+          "0": 10,
+          "1": 10
+        }
+      },
+      "combined": {
+        "v01_length_matched": {
+          "0": 390,
+          "1": 390
+        },
+        "v02_synthetic": {
+          "0": 20,
+          "1": 20
+        }
+      },
+      "frozen_eval": {
+        "NOT_RECORDED": {
+          "0": 10,
+          "1": 10
+        }
+      },
+      "hard": {
+        "v02_hard_examples": {
+          "0": 15,
+          "1": 15
+        }
+      },
+      "independent_eval": {
+        "v02_independent_eval": {
+          "0": 20,
+          "1": 20
+        }
+      },
+      "legacy_corpus": {
+        "NOT_RECORDED": {
+          "0": 3000,
+          "1": 3000
+        }
+      },
+      "legacy_matched": {
+        "NOT_RECORDED": {
+          "0": 390,
+          "1": 390
+        }
+      },
+      "legacy_test": {
+        "NOT_RECORDED": {
+          "0": 59,
+          "1": 58
+        }
+      },
+      "legacy_train": {
+        "NOT_RECORDED": {
+          "0": 273,
+          "1": 273
+        }
+      },
+      "legacy_validation": {
+        "NOT_RECORDED": {
+          "0": 58,
+          "1": 59
+        }
+      },
+      "pilot": {
+        "NOT_RECORDED": {
+          "0": 9,
+          "1": 9
+        }
+      },
+      "raw_sample": {
+        "NOT_RECORDED": {
+          "0": 6,
+          "1": 6
+        }
+      },
+      "synthetic_train": {
+        "NOT_RECORDED": {
+          "0": 15,
+          "1": 15
+        }
+      },
+      "synthetic_validation": {
+        "NOT_RECORDED": {
+          "0": 5,
+          "1": 5
+        }
+      }
+    },
+    "unknowns": [
+      "Upstream revisions and row/document/person identifiers",
+      "License and acquisition evidence",
+      "Whether every positive record actually contains in-scope PII",
+      "Manual lineage and authorship",
+      "Causal contribution of source style versus privacy content to model errors"
+    ]
+  },
+  "source_sha256": {
+    "src/api.py": "f8a012a165dedc1d251a9c8634057ec5763993c83ab065fc1904686022112475",
+    "src/build_dataset.py": "c7430a44e6e78ba1d22a6ec990a03e1624802cb5376fbf8bd782b0abba3b17d7",
+    "src/dataset_audit.py": "12b877d8154c3ce9875ebc85fa824deef095109c0f89561761bc7b635dd63d1d",
+    "src/pii_rules.py": "e8c3a04e803efa1dbde4702be43bb6eb33260ff690c0eba56bc5c98a1a13057c",
+    "src/privacy_decision_engine.py": "957b398d3cd75c5f7fc9cb018d992ca664f6efb2ad264fb4de3f6481b436c5f9"
+  },
+  "tool_sha256": "24bc1dfd413688b720a313e3d7bc4cfb6182565e1f653848c71871783840a036",
+  "version": 1
+}

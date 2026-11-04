@@ -14,10 +14,18 @@ def process_request(text: str, model, backend) -> dict:
         record_outcome(audit_id, status, latency_ms=(perf_counter() - started_at) * 1000)
 
     # Analyze the incoming request locally.
-    analysis = analyze_message(text, model)
+    try:
+        analysis = analyze_message(text, model)
+        policy = enforce_policy(text, analysis)
+    except Exception:
+        return {"decision": "ERROR", "forward_allowed": False, "reason": "Security analysis unavailable",
+                "detected_types": [], "secret_types": [], "backend_called": False, "response": None}
 
     # Enforce the security policy.
-    policy = enforce_policy(text, analysis)
+    if (policy.get("decision") not in {"ALLOW", "BLOCK", "HOLD"}
+            or policy.get("forward_allowed") is not (policy.get("decision") == "ALLOW")):
+        return {"decision": "ERROR", "forward_allowed": False, "reason": "Security policy unavailable",
+                "detected_types": [], "secret_types": [], "backend_called": False, "response": None}
 
     response = {
         "decision": policy["decision"],
