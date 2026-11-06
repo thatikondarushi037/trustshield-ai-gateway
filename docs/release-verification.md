@@ -1,6 +1,6 @@
 # V1.0 release-candidate verification
 
-Verification performed in the existing `feature/ml-evaluation` working tree, November 2026. No commit, push, merge or publication was performed. Previous uncommitted dataset/holdout milestones were preserved. This is a local portfolio release candidate, not independently validated privacy protection or a public deployment approval.
+This document records local V1.0 release-candidate verification on `feature/ml-evaluation` in November 2026. The commands and observations below are historical evidence, not a statement of current Git, remote CI or publication status. Verification covers a local portfolio release candidate, not independently validated privacy protection or public deployment approval.
 
 ## Actual commands and observations
 
@@ -28,10 +28,10 @@ Commands below were executed from the repository root. Optional Playwright tools
 | `docker run --rm --network none trustshield:1.0.0-rc1 python -c "import pathlib,os,json; assert not list(pathlib.Path('/app').rglob('*.csv')); print(json.dumps({'uid':os.getuid(),'raw_csv_files':0,'demo_artifact':pathlib.Path('/app/builtin/demo.joblib').is_file()}))"` | uid 1000, zero raw CSV files, demo artifact true |
 | `docker run --rm --mount "type=bind,source=$((Get-Location).Path),target=/repo,readonly" --workdir /repo rhysd/actionlint:1.7.7 -color` | PASS, no diagnostics; image digest `sha256:887a259a5a534f3c4f36cb02dca341673c6089431057242cdc931e9f133147e9` |
 | `.\.venv\Scripts\python.exe -m src.devtools protected-check` | **14 protected data/model files unchanged** against pre-session hash inventory |
-| `.\.venv\Scripts\python.exe -m src.release_checks` | 8,660 available dataset-record checks; no prohibited candidate artifacts, detected credentials or full raw-text report matches. Candidate file count evolves as docs are added; use final output for exact inventory count |
+| `.\.venv\Scripts\python.exe -m src.release_checks` | 8,660 available dataset-record checks; no prohibited candidate artifacts, detected credentials or full raw-text report matches. The candidate file count was specific to that verification snapshot |
 | `git diff --check` | PASS |
 
-Streamlit AppTest emits its upstream bare-context warnings; Linux FastAPI TestClient also emits an upstream HTTPX deprecation warning. No tests were skipped or weakened. ResourceWarning remained an error. GitHub Actions itself was not run remotely because no push was authorized; actionlint and equivalent local builds/tests are the available evidence.
+Streamlit AppTest emits its upstream bare-context warnings; Linux FastAPI TestClient also emits an upstream HTTPX deprecation warning. No tests were skipped or weakened. ResourceWarning remained an error. The November 2026 verification did not include a remote GitHub Actions run; actionlint and equivalent local builds/tests are the recorded evidence.
 
 ## Defects found and fixed
 
@@ -43,11 +43,11 @@ Streamlit AppTest emits its upstream bare-context warnings; Linux FastAPI TestCl
 
 **Portfolio-ready local V1.0 release candidate:** working enforced flow, persistent metadata, polished verified console, actual Ollama execution, reproducible source-only tests, measured experiments, usable container deployment and honest evidence. It is not production-ready or a proven high-recall privacy detector.
 
-Publication/release process: review the final working tree and documentation, explicitly approve a commit/push, and observe the first remote CI run. No automatic deployment is configured. A fresh public clone reproduces synthetic software tests and the demo; it cannot independently reproduce private historical corpus metrics without the protected inputs. Container archived reports clearly disclose their different runtime model.
+Release verification should include review of the source and documentation and observation of remote CI results for the release revision. The configured workflow runs regression and container checks; it does not deploy the application. A fresh public clone reproduces synthetic software tests and the demo; it cannot independently reproduce private historical corpus metrics without the protected inputs. Container archived reports clearly disclose their different runtime model.
 
 Public-deployment blockers: user identity/authorization, TLS, quotas/rate limits, retention/backup/rotation design, stronger operational durability and a separate security review. Current classifier error rates preclude a strong privacy-protection claim. Audit finalization cannot roll back execution; local filesystem administrators can tamper with logs/secrets.
 
-Independent-human tasks: author genuinely new fictional prompts without access to existing examples, register provenance and source tracks, provide two independent blinded annotations, adjudicate, review the changed precollection evaluation plan, satisfy 300 resolved examples and 30 connected groups per class plus two tracks, and authorize a valid freeze. None was fabricated or performed by Codex.
+Independent-human tasks: author genuinely new fictional prompts without access to existing examples, register provenance and source tracks, provide two independent blinded annotations, adjudicate, review the changed precollection evaluation plan, satisfy 300 resolved examples and 30 connected groups per class plus two tracks, and authorize a valid freeze. These tasks were not completed as part of the recorded verification; the holdout validation above reported zero records and NOT_READY.
 
 Optional research: span-level contextual models, multilingual/obfuscation evaluation, larger source-balanced development calibration, group-aware uncertainty intervals, selective-risk guarantees and drift/OOD detection. Do not tune on the future frozen holdout.
 
