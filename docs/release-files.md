@@ -1,8 +1,8 @@
-# Working-tree release inventory
+# V1.0 release-candidate file inventory
 
-Includes preserved uncommitted dataset/reliability/holdout milestones as well as this release work. These files are not staged or committed. Secrets, local datasets, databases, logs, environments and model artifacts remain ignored.
+This inventory records files associated with the V1.0 release candidate, including dataset, reliability and holdout work. The groups describe their roles, not their Git status or an exhaustive current repository listing. Secrets, local datasets, databases, logs, environments and model artifacts are excluded from the inventory and remain ignored.
 
-## Modified tracked files
+## Gateway, dashboard and local configuration
 
 - `.gitignore`
 - `README.md`
@@ -16,7 +16,7 @@ Includes preserved uncommitted dataset/reliability/holdout milestones as well as
 - `src/review_queue.py`
 - `src/secret_detector.py`
 
-## Untracked review candidates
+## Supporting implementation, evaluation, documentation and verification
 
 - `.dockerignore`
 - `.github/workflows/ci.yml`
